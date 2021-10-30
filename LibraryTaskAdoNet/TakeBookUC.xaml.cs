@@ -53,9 +53,9 @@ namespace LibraryTaskAdoNet
             using (conn = new SqlConnection())
             {
                 conn.ConnectionString = cs;
-                conn.Open();
+                //conn.Open();
                 SqlCommand command = new SqlCommand();
-                command.CommandText = "select * from Books";
+                command.CommandText = "select * from S_Cards";
                 command.Connection = conn;
                 table = new DataTable();
 
@@ -121,7 +121,7 @@ namespace LibraryTaskAdoNet
             using (conn = new SqlConnection())
             {
                 conn.ConnectionString = cs;
-                conn.Open();
+                //conn.Open();
                 transaction = conn.BeginTransaction();
                 ++count;
                 SqlCommand command = new SqlCommand("sp_TakeBook", conn);
@@ -132,20 +132,41 @@ namespace LibraryTaskAdoNet
 
 
                 var param1 = new SqlParameter();
-                param1.Value = FirstNameTxtBox.Text.ToString();
-                param1.ParameterName = "@FirstName";
-                param1.SqlDbType = SqlDbType.NVarChar;
+                param1.Value = idcard;
+                param1.ParameterName = "@Id";
+                param1.SqlDbType = SqlDbType.Int;
                 command.Parameters.Add(param1);
 
-
-
-
-
                 var param2 = new SqlParameter();
-                param2.Value = PasswordTxtBox.Password.ToString();
-                param2.ParameterName = "@Password";
-                param2.SqlDbType = SqlDbType.NVarChar;
+                param2.Value = studentcard;
+                param2.ParameterName = "@Id_Student";
+                param2.SqlDbType = SqlDbType.Int;
                 command.Parameters.Add(param2);
+
+                var param3 = new SqlParameter();
+                param2.Value = bookcard;
+                param2.ParameterName = "@Id_Book";
+                param2.SqlDbType = SqlDbType.Int;
+                command.Parameters.Add(param3);
+
+                var param4 = new SqlParameter();
+                param2.Value = Dateout;
+                param2.ParameterName = "@DateOut";
+                param2.SqlDbType = SqlDbType.DateTime;
+                command.Parameters.Add(param4);
+
+                var param5 = new SqlParameter();
+                param2.Value = Datein;
+                param2.ParameterName = "@DateIn";
+                param2.SqlDbType = SqlDbType.DateTime;
+                command.Parameters.Add(param5);
+
+                var param6 = new SqlParameter();
+                param2.Value = libcard;
+                param2.ParameterName = "@Id_Lib";
+                param2.SqlDbType = SqlDbType.Int;
+                command.Parameters.Add(param6);
+
                 command.Transaction = transaction;
 
 
@@ -154,7 +175,6 @@ namespace LibraryTaskAdoNet
                 {
                     command.ExecuteNonQuery();
                     transaction.Commit();
-                    MyGrid.Children.Add(TakeBookUC);
                 }
                 catch (Exception ex)
                 {

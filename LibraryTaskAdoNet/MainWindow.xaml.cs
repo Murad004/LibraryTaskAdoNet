@@ -61,7 +61,7 @@ namespace LibraryTaskAdoNet
 
 
                 var param2 = new SqlParameter();
-                param2.Value = PasswordTxtBox.Password.ToString();
+                param2.Value = PassBox.Password.ToString();
                 param2.ParameterName = "@Password";
                 param2.SqlDbType = SqlDbType.NVarChar;
                 command.Parameters.Add(param2);

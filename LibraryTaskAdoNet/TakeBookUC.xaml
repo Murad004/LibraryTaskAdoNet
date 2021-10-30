@@ -7,7 +7,8 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid Background="White">
-        <DataGrid SelectionChanged="MyDataGrid_SelectionChanged" Name="MyDataGrid" Width="500" Height="350" Margin="0,-50,0,0"></DataGrid>
+        <DataGrid SelectionChanged="MyDataGrid_SelectionChanged" Name="MyDataGrid" Width="500" Height="350" Margin="-280,-50,0,0"></DataGrid>
+        <DataGrid  Name="MyDataGrid2" Width="200" Height="350" Margin="500,-50,0,0"></DataGrid>
         <Button Click="BuyBtn_Click" Background="Red" Name="BuyBtn" Content="Buy" Width="200" Height="50" FontSize="26" Margin="0,370,0,0"></Button>
     </Grid>
 </UserControl>
